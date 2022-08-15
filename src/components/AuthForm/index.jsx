@@ -90,6 +90,7 @@ const AuthForm = () => {
             navigate("/todo", { replace: true });
         }
     }, [authToken, navigate]);
+
     return (
         <Wrapper>
             <Header>{authFormType === "login" ? "로그인" : "회원가입"}</Header>
