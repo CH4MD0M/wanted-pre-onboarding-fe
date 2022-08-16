@@ -81,7 +81,10 @@ const AuthForm = () => {
     const formSubmitHandler = (e) => {
         e.preventDefault();
         if (authFormType === "login") login();
-        if (authFormType === "signup") signup();
+
+        if (authFormType === "signup") {
+            signup();
+        }
     };
 
     // Page Redirection

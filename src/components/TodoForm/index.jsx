@@ -7,20 +7,20 @@ import useInput from "@hooks/useInput";
 // CSS
 
 import { Wrapper, Form } from "./style";
-import { Label, Error } from "@components/AuthForm/style";
+import { Label } from "@components/AuthForm/style";
 import { Button } from "@components/UI/Button";
 import TodoContext from "store/todoStore";
 
 const TodoForm = () => {
     const { authToken } = useContext(AuthContext);
-    const { updateTodo } = useContext(TodoContext);
+    const { createTodo } = useContext(TodoContext);
 
     const {
         value: todo,
         isValid: todoIsValid,
-        hasError: todoHasError,
         valueChangeHandler: onChangeTodo,
         inputBlurHandler: onBlurTodo,
+        resetHandler,
     } = useInput((value) => value.length !== 0);
 
     // Form Validation
@@ -30,12 +30,11 @@ const TodoForm = () => {
     }
 
     // TodoList 추가
-    const createTodo = () => {
+    const createTodoHandler = () => {
         todoApi
             .createTodo(authToken, { todo })
             .then((response) => {
-                // console.log(response.data);
-                updateTodo(response.data);
+                createTodo(response.data);
             })
             .catch((error) => {
                 console.log(error.response);
@@ -44,13 +43,14 @@ const TodoForm = () => {
 
     const formSubmitHandler = (e) => {
         e.preventDefault();
-        createTodo();
+        createTodoHandler();
+        resetHandler();
     };
 
     return (
         <Wrapper>
             <Form onSubmit={formSubmitHandler}>
-                <Label error={todoHasError}>
+                <Label>
                     <div>
                         <input
                             type="text"
@@ -61,7 +61,6 @@ const TodoForm = () => {
                             onBlur={onBlurTodo}
                         />
                     </div>
-                    {todoHasError && <Error>내용을 입력해주세요</Error>}
                 </Label>
                 <Button type="submit" disabled={!formIsValid}>
                     추가
