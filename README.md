@@ -2,6 +2,16 @@
 
 ## Tech Stack
 
+<div>
+    <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+    <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
+    <img src="https://img.shields.io/badge/MUI-007FFF?style=for-the-badge&logo=mui&logoColor=white">
+    <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+</div>
+
+<br/>
+<br/>
+
 ## 실행화면
 
 ### 로그인/회원가입
@@ -22,6 +32,9 @@
     -   :white_check_mark: 응답받은 JWT는 로컬 스토리지에 저장해주세요
 
 <br/>
+
+---
+
 <br/>
 
 ### Url 전환
@@ -35,6 +48,9 @@
     -   :white_check_mark: 로컬 스토리지에 토큰이 없는 상태로 /todo페이지에 접속한다면 / 경로로 리다이렉트 시켜주세요
 
 <br/>
+
+---
+
 <br/>
 
 ### TodoList
