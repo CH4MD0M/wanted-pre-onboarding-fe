@@ -12,8 +12,8 @@ const Home = () => {
     return (
         <Layout>
             {!authToken && <Navigate to="/auth" replace />}
-            <TodoForm authToken={authToken} />
-            <TodoList authToken={authToken} />
+            <TodoForm />
+            <TodoList />
         </Layout>
     );
 };

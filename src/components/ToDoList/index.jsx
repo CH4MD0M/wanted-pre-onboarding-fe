@@ -1,17 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as todoApi from "@api/todoApi";
 import CustomModal from "@components/Modal";
-
-// CSS
-import { Wrapper } from "./style";
 import TodoContext from "store/todoStore";
 import TodoItem from "@components/TodoItem";
 import ModalContext from "store/modalStore";
+import AuthContext from "store/authStore";
 
-const TodoList = ({ authToken }) => {
+// CSS
+import { Wrapper } from "./style";
+
+const TodoList = () => {
+    const { authToken } = useContext(AuthContext);
     const { todos, todoId, content, setTodos, deleteTodo } =
         useContext(TodoContext);
-    const { modalOpen } = useContext(ModalContext);
+    const { modalOpen, setModalOpen } = useContext(ModalContext);
 
     // TodoList 불러오기
     const getTodoList = () => {
@@ -20,14 +22,15 @@ const TodoList = ({ authToken }) => {
             .then((response) => {
                 setTodos(response.data);
             })
-            .catch(() => {
-                alert("로그인해주세요!");
+            .catch((error) => {
+                console.log(error.response);
             });
     };
 
     // TodoList 삭제하기
     const deleteTodoHandler = () => {
         deleteTodo(todoId);
+        getTodoList();
     };
 
     useEffect(() => {
