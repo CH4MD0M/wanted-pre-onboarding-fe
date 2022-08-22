@@ -1,14 +1,15 @@
 import React, { useContext, useState } from "react";
 import ModalContext from "store/modalStore";
-
-import { Modal } from "@mui/material";
-import { Box } from "./style";
 import TodoContext from "store/todoStore";
 
-const CustomModal = ({ content, deleteTodo }) => {
+// CSS
+import { Modal } from "@mui/material";
+import { Box } from "./style";
+
+const CustomModal = ({ content }) => {
     const { modalOpen, setModalOpen, updateMode, setUpdateMode } =
         useContext(ModalContext);
-    const { updateTodo } = useContext(TodoContext);
+    const { updateTodo, deleteTodo, todoId } = useContext(TodoContext);
     const [newTodo, setNewTodo] = useState(content.todo);
 
     const onChangeHandler = (e) => {
@@ -21,11 +22,11 @@ const CustomModal = ({ content, deleteTodo }) => {
     };
 
     const onDelete = () => {
-        deleteTodo();
+        deleteTodo(todoId);
         onClose();
     };
 
-    const modifyTodoHandler = () => {
+    const onModify = () => {
         updateTodo(content.id, {
             todo: newTodo,
             isCompleted: content.isCompleted,
@@ -53,9 +54,7 @@ const CustomModal = ({ content, deleteTodo }) => {
 
                     <div className="btn-container">
                         <button onClick={onClose}>취소</button>
-                        <button
-                            onClick={updateMode ? modifyTodoHandler : onDelete}
-                        >
+                        <button onClick={updateMode ? onModify : onDelete}>
                             확인
                         </button>
                     </div>

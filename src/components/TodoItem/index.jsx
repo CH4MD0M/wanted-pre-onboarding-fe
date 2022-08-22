@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import ModalContext from "store/modalStore";
 import TodoContext from "store/todoStore";
 
@@ -8,29 +8,30 @@ import { BsFillCheckCircleFill, BsFillTrashFill } from "react-icons/bs";
 import { MdModeEditOutline } from "react-icons/md";
 
 const TodoItem = ({ id, todo, isCompleted }) => {
-    const { setModalOpen, setUpdateMode } = useContext(ModalContext);
     const { setTodoId, setContent, updateTodo } = useContext(TodoContext);
-    const [complete, setComplete] = useState(isCompleted);
+    const { setModalOpen, setUpdateMode } = useContext(ModalContext);
 
-    const handleUpdate = () => {
+    // 완료 버튼 클릭
+    const completeTodoHandler = () => {
+        updateTodo(id, { todo, isCompleted: !isCompleted });
+    };
+
+    // 수정 버튼 클릭
+    const handleModify = () => {
         setModalOpen(true);
         setUpdateMode(true);
         setContent({ id, todo, isCompleted });
     };
 
+    // 삭제 버튼 클릭
     const handleDelete = () => {
         setModalOpen(true);
         setTodoId(id);
     };
 
-    const completeTodoHandler = () => {
-        updateTodo(id, { todo, isCompleted: !isCompleted });
-        setComplete(!complete);
-    };
-
     return (
         <>
-            <Wrapper isCompleted={complete}>
+            <Wrapper isCompleted={isCompleted}>
                 <div className="todo">{todo}</div>
                 <div className="task">
                     <button
@@ -39,7 +40,7 @@ const TodoItem = ({ id, todo, isCompleted }) => {
                     >
                         <BsFillCheckCircleFill />
                     </button>
-                    <button className="onModify" onClick={handleUpdate}>
+                    <button className="onModify" onClick={handleModify}>
                         <MdModeEditOutline />
                     </button>
                     <button className="onDelete" onClick={handleDelete}>

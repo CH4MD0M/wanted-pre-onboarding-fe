@@ -1,41 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
-import * as todoApi from "@api/todoApi";
+import React, { useContext, useEffect } from "react";
 import CustomModal from "@components/Modal";
 import TodoContext from "store/todoStore";
 import TodoItem from "@components/TodoItem";
 import ModalContext from "store/modalStore";
-import AuthContext from "store/authStore";
 
 // CSS
 import { Wrapper } from "./style";
 
 const TodoList = () => {
-    const { authToken } = useContext(AuthContext);
-    const { todos, todoId, content, setTodos, deleteTodo } =
-        useContext(TodoContext);
-    const { modalOpen, setModalOpen } = useContext(ModalContext);
-
-    // TodoList 불러오기
-    const getTodoList = () => {
-        todoApi
-            .getTodos(authToken)
-            .then((response) => {
-                setTodos(response.data);
-            })
-            .catch((error) => {
-                console.log(error.response);
-            });
-    };
-
-    // TodoList 삭제하기
-    const deleteTodoHandler = () => {
-        deleteTodo(todoId);
-        getTodoList();
-    };
+    const { todos, content, getTodo } = useContext(TodoContext);
+    const { modalOpen } = useContext(ModalContext);
 
     useEffect(() => {
-        getTodoList();
-    }, [modalOpen]);
+        getTodo();
+    }, []);
 
     return (
         <Wrapper>
@@ -47,9 +25,7 @@ const TodoList = () => {
                     id={item.id}
                 />
             ))}
-            {modalOpen && (
-                <CustomModal content={content} deleteTodo={deleteTodoHandler} />
-            )}
+            {modalOpen && <CustomModal content={content} />}
         </Wrapper>
     );
 };
