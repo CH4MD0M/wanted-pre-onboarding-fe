@@ -30,7 +30,7 @@ const AuthForm = () => {
         hasError: emailHasError,
         valueChangeHandler: onChangeEmail,
         inputBlurHandler: onBlurEmail,
-    } = useInput((value) => /\S+@\S+\.\S+/.test(value));
+    } = useInput((value) => value.includes("@"));
 
     const {
         value: password,
@@ -71,9 +71,11 @@ const AuthForm = () => {
             .signup({ email, password })
             .then(() => {
                 toggleAuthFormType("login");
+                alert("회원가입 완료");
             })
             .catch((error) => {
-                console.log(error.response.data);
+                // console.log(error.response.data.message);
+                alert(error.response.data.message);
             });
     };
 
@@ -112,7 +114,7 @@ const AuthForm = () => {
                         />
                     </div>
                     {emailHasError && (
-                        <Error>이메일 형식을 확인해주세요.</Error>
+                        <Error>이메일 형식(@포함)을 확인해주세요.</Error>
                     )}
                 </Label>
                 <Label id="password-label" error={passwordHasError}>
@@ -129,7 +131,7 @@ const AuthForm = () => {
                         />
                     </div>
                     {passwordHasError && (
-                        <Error>비밀번호 형식을 확인해주세요.</Error>
+                        <Error>비밀번호를 8자 이상으로 설정해주세요.</Error>
                     )}
                 </Label>
                 <Button type="submit" disabled={!formIsValid}>
