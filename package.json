@@ -26,9 +26,9 @@
         "build": "craco build",
         "test": "craco test",
         "eject": "craco eject",
-        "deploy": "craco build gh-pages -d build"
+        "deploy": "craco build && gh-pages -d build"
     },
-    "homepage": "http://ch4md0m.github.io/wanted-pre-onboarding-fe/",
+    "homepage": "https://ch4md0m.github.io/wanted-pre-onboarding-fe/",
     "eslintConfig": {
         "extends": [
             "react-app",
