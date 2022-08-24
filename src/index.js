@@ -9,14 +9,14 @@ import App from "./App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-            <AuthContextProvider>
-                <TodoContextProvider>
-                    <ModalContextProvider>
+        <AuthContextProvider>
+            <TodoContextProvider>
+                <ModalContextProvider>
+                    <BrowserRouter basename={process.env.PUBLIC_URL}>
                         <App />
-                    </ModalContextProvider>
-                </TodoContextProvider>
-            </AuthContextProvider>
-        </BrowserRouter>
+                    </BrowserRouter>
+                </ModalContextProvider>
+            </TodoContextProvider>
+        </AuthContextProvider>
     </React.StrictMode>
 );
