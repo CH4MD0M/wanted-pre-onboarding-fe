@@ -28,7 +28,7 @@ const TodoForm = () => {
         formIsValid = true;
     }
 
-    // TodoList 추가
+    // Todo 추가
     const createTodoHandler = () => {
         todoApi
             .createTodo(authToken, { todo })
