@@ -4,17 +4,36 @@
 
 <div>
     <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+    <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
     <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
     <img src="https://img.shields.io/badge/MUI-007FFF?style=for-the-badge&logo=mui&logoColor=white">
-    <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 </div>
+
+<br/>
+<br/>
+ 
+## 실행
+### 1. 실행 방법
+
+```sh
+npm install
+
+npm run start
+
+```
+
+<br/>
+
+### 2. 데모 링크
+
+[wanted 프론트엔드 과제 링크](https://ch4md0m.github.io/wanted-pre-onboarding-fe/)
 
 <br/>
 <br/>
 
 ## 실행화면
 
-### 로그인/회원가입
+### 1. 로그인/회원가입
 
 ![로그인](https://user-images.githubusercontent.com/54847910/185144685-68618c18-8133-44cd-b1c6-a95165c92e25.gif)
 
@@ -37,7 +56,7 @@
 
 <br/>
 
-### Url 전환
+### 2. Url 전환
 
 ![링크전환](https://user-images.githubusercontent.com/54847910/185144728-918a00d5-973b-4e59-829c-114f68467d70.gif)
 
@@ -53,7 +72,7 @@
 
 <br/>
 
-### TodoList
+### 3. TodoList
 
 ![Todo](https://user-images.githubusercontent.com/54847910/185136325-75e8e378-2649-45ac-9373-34817c4abce4.gif)
 
@@ -69,3 +88,7 @@
 -   :white_check_mark: 투두 리스트의 개별 아이템 우측에 수정버튼이 존재하고 해당 버튼을 누르면 수정모드가 활성화되고 투두 리스트의 내용을 수정할 수 있도록 해주세요
 -   :white_check_mark: 수정모드에서는 개별 아이템의 우측에 제출버튼과 취소버튼이 표시되며 해당 버튼을 통해서 수정 내용을 제출하거나 수정을 취소할 수 있도록 해주세요
 -   :white_check_mark: 투두 리스트의 개별 아이템 우측에 삭제버튼이 존재하고 해당 버튼을 누르면 투두 리스트가 삭제되도록 해주세요
+
+```
+
+```
